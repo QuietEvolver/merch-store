@@ -12,7 +12,7 @@ function ItemDetail(props) {
         <div>{props.item.id}</div>
       </div>
       <div className="details-button-area">
-        <button>Back to list</button>
+        <button onClick={props.onClickBackToList}>Back to list</button>
         <button className='yellow'>Edit</button>
         <button className='red'>Delete</button>
         <button className='green'>Buy</button>

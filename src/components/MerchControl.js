@@ -47,6 +47,12 @@ class MerchControl extends React.Component {
     return list.filter(item => item.id === id)[0];
   };
 
+  handleClickBackToList = () => {
+    this.setState(() => ({
+      selectedItem: null,
+    }));
+  }
+
   handleClickAddNewItem = () => {
     this.setState((prevState) => ({
       newItemFormShowing: !prevState.newItemFormShowing
@@ -90,7 +96,7 @@ class MerchControl extends React.Component {
           {this.state.selectedItem !== null && 
             <ItemDetail 
               item={this.state.selectedItem} 
-
+              onClickBackToList={this.handleClickBackToList}
             />
           }
         </main>
