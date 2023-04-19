@@ -18,41 +18,58 @@ function NewItemForm(props) {
     });
   }
   
+  function handleEditItemFormSubmission(e) {
+    e.preventDefault();
+    props.onClickAddItem({
+      name: e.target.name.value || e.target.name.placeholder,
+      manufacturer: e.target.manufacturer.value || e.target.manufacturer.placeholder,
+      description: e.target.description.value || e.target.description.placeholder,
+      category: e.target.category.value || e.target.category.placeholder,
+      price: e.target.price.value || e.target.price.placeholder,
+      quantity: e.target.quantity.value || e.target.quantity.placeholder,
+      id: props.editingItem.id,
+    });
+  }
+  
   return (
-    <form onSubmit={handleNewItemFormSubmission}>
+    <form onSubmit={props.type === 'create' ? handleNewItemFormSubmission : handleEditItemFormSubmission}>
       <div className="form-row">
         <label for="name">Item name</label>
-        <input name="name" type="text" />
+        <input placeholder={props.editingItem && props.editingItem.name} name="name" type="text" />
       </div>
       <div className="form-row">
         <label for="manufacturer">Manufacturer</label>
-        <input name="manufacturer" type="text" />
+        <input placeholder={props.editingItem && props.editingItem.manufacturer} name="manufacturer" type="text" />
       </div>
       <div className="form-row">
         <label for="description">Description</label>
-        <textarea name="description" type="text" />
+        <textarea placeholder={props.editingItem && props.editingItem.description} name="description" type="text" />
       </div>
       <div className="form-row">
         <label for="category">Category</label>
-        <input name="category" type="text" />
+        <input placeholder={props.editingItem && props.editingItem.category} name="category" type="text" />
       </div>
       <div className="form-row">
         <label for="price">Price</label>
-        <input name="price" type="text" />
+        <input placeholder={props.editingItem && props.editingItem.price} name="price" type="number" />
       </div>
       <div className="form-row">
         <label for="quantity">Quantity</label>
-        <input name="quantity" type="text" />
+        <input placeholder={props.editingItem && props.editingItem.quantity} name="quantity" type="number" />
       </div>
-      <button className='green'>Save</button>
-      <button onClick={props.onCancelAddItem} type='button'>Cancel</button>
+      <div className="form-row buttons">
+        <button className='green'>Save</button>
+        <button onClick={props.onCancelAddItem} type='button'>Cancel</button>
+      </div>
     </form>
   );
 }
 
 NewItemForm.propType = {
   onClickAddItem: PropTypes.func,
-  onCancelAddItem: PropTypes.func
+  onCancelAddItem: PropTypes.func,
+  type: PropTypes.string,
+  editingItem: PropTypes.object,
 }
 
 export default NewItemForm;

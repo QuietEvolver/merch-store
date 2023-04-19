@@ -108,13 +108,30 @@ class MerchControl extends React.Component {
     });
   }
 
+  handleEditingItem = (newItem) => {
+    console.log('handleEditingItem newItem', newItem)
+    const newItemList = [...this.state.itemList];
+
+    // delete old
+    const doomedItem = this.
+    getItemById(newItem.id, newItemList);
+    newItemList.splice(newItemList.indexOf(doomedItem), 1);
+
+    // add new with same ID
+    newItemList.push(newItem);
+
+    this.setState({
+      itemList: newItemList,
+    });
+  }
+
 
 
   render() {
     return (
       <React.Fragment>
         <Header />
-        <main>
+        <main className={this.state.newItemFormShowing ? 'veiled' : ''}>
           {
             this.state.selectedItem === null ?
             <React.Fragment>
@@ -125,11 +142,13 @@ class MerchControl extends React.Component {
               <button className={this.state.newItemFormShowing || 'green'} onClick={this.handleClickAddNewItem}>
                 Add new item
               </button>
+
               <Modal 
                 showing={this.state.newItemFormShowing}
                 headerText={'Add new item'}
-                bodyComponent={<NewItemForm onClickAddItem={this.handleAddingNewItem} onCancelAddItem={this.handleCancelAddingNewItem} />}
+                bodyComponent={<NewItemForm type='create' onClickAddItem={this.handleAddingNewItem} onCancelAddItem={this.handleCancelAddingNewItem} />}
               />
+
             </React.Fragment>
             :
             <ItemDetail 
@@ -138,6 +157,7 @@ class MerchControl extends React.Component {
               onClickBuy={this.handleBuyItem}
               onClickRestock={this.handleRestockItem}
               onClickDelete={this.handleDeleteItem}
+              onClickEdit={this.handleEditingItem}
             />
           }  
         </main>
