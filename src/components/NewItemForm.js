@@ -17,7 +17,7 @@ function NewItemForm(props) {
       id: v4(),
     });
   }
-  
+
   function handleEditItemFormSubmission(e) {
     e.preventDefault();
     props.onClickAddItem({
@@ -29,6 +29,7 @@ function NewItemForm(props) {
       quantity: e.target.quantity.value || e.target.quantity.placeholder,
       id: props.editingItem.id,
     });
+    props.returnToList();
   }
   
   return (
@@ -58,7 +59,7 @@ function NewItemForm(props) {
         <input placeholder={props.editingItem && props.editingItem.quantity} name="quantity" type="number" />
       </div>
       <div className="form-row buttons">
-        <button className='green'>Save</button>
+        <button type="submit" className='green'>Save</button>
         <button onClick={props.onCancelAddItem} type='button'>Cancel</button>
       </div>
     </form>
@@ -70,6 +71,7 @@ NewItemForm.propType = {
   onCancelAddItem: PropTypes.func,
   type: PropTypes.string,
   editingItem: PropTypes.object,
+  returnToList: PropTypes.func,
 }
 
 export default NewItemForm;

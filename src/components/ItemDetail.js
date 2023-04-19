@@ -34,7 +34,15 @@ class ItemDetail extends React.Component {
         <Modal 
           showing={this.state.editModalShowing} 
           headerText="Edit modal" 
-          bodyComponent={<NewItemForm editingItem={this.props.item} type='edit' onClickAddItem={this.props.onClickEdit} onCancelAddItem={() => this.hideEditModal()} />}
+          bodyComponent={
+            <NewItemForm 
+              type='edit' 
+              editingItem={this.props.item} 
+              onClickAddItem={this.props.onClickEdit} 
+              onCancelAddItem={() => this.hideEditModal()}
+              returnToList={this.props.returnToList}
+            />
+          }
         />
 
         <div className='item-attribute-list'>
@@ -65,6 +73,7 @@ ItemDetail.propTypes = {
   onClickRestock: PropTypes.func,
   onClickDelete: PropTypes.func,
   onClickEdit: PropTypes.func,
+  returnToList: PropTypes.func,
 };
 
 export default ItemDetail;

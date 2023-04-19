@@ -113,8 +113,7 @@ class MerchControl extends React.Component {
     const newItemList = [...this.state.itemList];
 
     // delete old
-    const doomedItem = this.
-    getItemById(newItem.id, newItemList);
+    const doomedItem = this.getItemById(newItem.id, newItemList);
     newItemList.splice(newItemList.indexOf(doomedItem), 1);
 
     // add new with same ID
@@ -123,6 +122,7 @@ class MerchControl extends React.Component {
     this.setState({
       itemList: newItemList,
     });
+    this.forceUpdate();
   }
 
 
@@ -152,12 +152,13 @@ class MerchControl extends React.Component {
             </React.Fragment>
             :
             <ItemDetail 
-              item={this.state.selectedItem} 
+              item={this.state.selectedItem}
               onClickBackToList={this.handleClickBackToList}
               onClickBuy={this.handleBuyItem}
               onClickRestock={this.handleRestockItem}
               onClickDelete={this.handleDeleteItem}
               onClickEdit={this.handleEditingItem}
+              returnToList={this.handleClickBackToList}
             />
           }  
         </main>
