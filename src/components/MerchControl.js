@@ -3,6 +3,7 @@ import Header from './Header';
 import MerchList from './MerchList';
 import { v4 } from 'uuid';
 import NewItemForm from './NewItemForm';
+import ItemDetail from './ItemDetail';
 
 class MerchControl extends React.Component {
   constructor(props) {
@@ -86,7 +87,12 @@ class MerchControl extends React.Component {
             {this.state.newItemFormShowing ? 'Cancel' : 'Add new item'}
           </button>}
 
-          {this.state.selectedItem !== null && <div>showing a details page!</div>}
+          {this.state.selectedItem !== null && 
+            <ItemDetail 
+              item={this.state.selectedItem} 
+
+            />
+          }
         </main>
       </React.Fragment>
     );

@@ -2,6 +2,11 @@
   --main-bg-color: #222;
   --main-text-color: #ddd;
   --header-height: 4rem;
+
+  --button-green: rgb(7, 65, 7);
+  --button-yellow: rgb(169, 169, 53);
+  --button-red: rgb(114, 22, 22);
+  --button-orange: rgb(189, 132, 25);
 }
 
 *, * *, * * * {
@@ -28,9 +33,26 @@ button {
   margin: 1rem;
 }
 
+button.green {
+  color: #eee;
+  background-color: var(--button-green);
+}
+button.yellow {
+  color: #eee;
+  background-color: var(--button-yellow);
+}
+button.red {
+  color: #eee;
+  background-color: var(--button-red);
+}
+button.orange {
+  color: #eee;
+  background-color: var(--button-orange);
+}
+
 button:hover {
   outline: 2px solid green;
-  background-color: rgb(255, 219, 151);
+  background-color: rgb(255, 219, 151, 0.5);
 }
 
 main {
@@ -107,4 +129,26 @@ form textarea {
   padding: 0.25rem;
   gap: 1rem;
   width: 100%;
+}
+
+.item-details-card {
+  border: 1px solid red;
+  padding: 1rem;
+}
+
+.item-attribute-list {
+  border: 1px solid pink;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-attribute-list > h1 {
+  margin-top: 0;
+}
+
+.details-button-area {
+  background-color: salmon;
 }
