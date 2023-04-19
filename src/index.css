@@ -91,6 +91,14 @@ header h1 {
   padding-bottom: 2rem;
 }
 
+.item-list-entry .button-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
 .item-list-entry > div:first-child {
   font-size: 150%;
   font-weight: bold;
@@ -98,7 +106,7 @@ header h1 {
 .item-list-entry > div:nth-child(3) {
   font-style: italic;
 }
-.item-list-entry > div:last-child {
+.item-list-entry > div:nth-last-child(2) {
   position: absolute;
   bottom: 0.25rem;
   right: 0.25rem;
