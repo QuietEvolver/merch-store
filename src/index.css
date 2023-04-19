@@ -19,6 +19,20 @@ body {
   color: var(--main-text-color);
 }
 
+button {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+  margin: 1rem;
+}
+
+button:hover {
+  outline: 2px solid green;
+  background-color: rgb(255, 219, 151);
+}
+
 main {
   margin: 1rem;
 }
@@ -36,16 +50,36 @@ header h1 {
   margin: 0;
 }
 
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
 .item-list-entry {
+  position: relative;
   border: 1px solid black;
   padding: 1rem;
-  width: max-content;
+  min-width: 20rem;
+  width: 32%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-bottom: 2rem;
 }
 
 .item-list-entry > div:first-child {
   font-size: 150%;
   font-weight: bold;
+}
+.item-list-entry > div:nth-child(3) {
+  font-style: italic;
+}
+.item-list-entry > div:last-child {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+  font-size: 75%;
+  color: gray;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import MerchList from './MerchList';
 import { v4 } from 'uuid';
+import NewItemForm from './NewItemForm';
 
 class MerchControl extends React.Component {
   constructor(props) {
@@ -19,12 +20,21 @@ class MerchControl extends React.Component {
           id: v4(),
         },
         {
-          item: 'Velvet Claw Sheath (set of 2)',
+          name: 'Velvet Claw Sheath (set of 2)',
           manufacturer: 'CluckCo',
           description: 'A luxurious covering for your pet\'s deadly claws.',
           category: 'Gloves',
           price: '125',
           quantity: '40',
+          id: v4(),
+        },
+        {
+          name: 'Chicken Pants',
+          manufacturer: 'CluckCo',
+          description: 'A one-size-fits-all solution to your chicken\'s rampant nudity.',
+          category: 'Pants',
+          price: '80',
+          quantity: '200',
           id: v4(),
         },
       ],
@@ -56,13 +66,13 @@ class MerchControl extends React.Component {
           {
             this.state.newItemFormShowing ?
 
-              <div>new item form!</div> //if true > else do next line after : if false.
+              <NewItemForm /> //if true
               :
               <div><MerchList itemList={this.state.itemList} /></div> // if false
           }
 
           <button onClick={this.handleClickAddNewItem}>
-            {this.state.newItemFormShowing ? 'cancel' : 'add new'}
+            {this.state.newItemFormShowing ? 'Cancel' : 'Add new item'}
           </button>
 
           {this.state.selectedItem !== null && <div>showing a details page!</div>}

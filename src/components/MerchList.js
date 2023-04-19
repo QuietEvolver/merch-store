@@ -1,4 +1,5 @@
 import React from "react";
+import MerchListEntry from "./MerchListEntry";
 import PropTypes from "prop-types";
 
 function MerchList(props) {
@@ -6,21 +7,15 @@ function MerchList(props) {
   return (
     <React.Fragment>
       <h2>Item List:</h2>
-      {props.itemList.map(item =>
-      <div className='item-list-entry'>
-        <div>{item.name}</div>
-        <div>{item.manufacturer}</div>
-        <div>{item.description}</div>
-        <div>Category: {item.category}</div>
-        <div>Price: ${item.price}</div>
-        <div>Quantity: {item.quantity}</div>
-        <div>{item.id}</div>
+      <div className='item-list'>
+        {props.itemList.map(item =>
+          <MerchListEntry 
+            item={item}
+          />
+        )}
       </div>
-      )}
     </React.Fragment>
   );
 }
-
-
 
 export default MerchList;
