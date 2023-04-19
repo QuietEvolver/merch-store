@@ -1,5 +1,8 @@
 
 function MerchListEntry(props) {
+
+
+
   return (
     <div className='item-list-entry'>
       <div>{props.item.name}</div>
@@ -9,6 +12,8 @@ function MerchListEntry(props) {
       <div>Price: ${props.item.price}</div>
       <div>Quantity: {props.item.quantity}</div>
       <div>{props.item.id}</div>
+
+      <button onClick={() => props.onClickViewDetails(props.item.id)}>View Details</button>
     </div>
   );
 }
