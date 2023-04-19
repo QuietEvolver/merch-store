@@ -184,7 +184,6 @@ form textarea {
   translate: -50% -50%;
   width: 50vw;
   min-height: 30rem;
-  background-color: rgb(93, 118, 93);
   padding: 1rem;
   opacity: 0;
   scale: 1.05;
@@ -194,13 +193,46 @@ form textarea {
   align-items: center;
   justify-content: center;
   border-radius: 1rem;
-  box-shadow: 0 0 1rem 0.25rem #00000066;
+  box-shadow: 0 0 1rem 0.25rem #000000;
   z-index: 1;
   transition: all 100ms ease;
 }
 
+.modal.create {
+  background-color: rgb(93, 118, 93);
+}
+.modal.edit {
+  background-color: rgb(101, 103, 64);
+}
+.modal.delete {
+  background-color: rgb(103, 64, 64);
+  min-height: 20rem;
+}
+
 .modal.showing {
   scale: 1;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.button-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.veil {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #000000cc;
+  pointer-events: none;
+  opacity: 0.1;
+  transition: all 100ms ease;
+}
+
+.veil.showing {
   opacity: 1;
   pointer-events: all;
 }

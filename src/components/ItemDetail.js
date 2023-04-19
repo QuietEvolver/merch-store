@@ -25,15 +25,28 @@ class ItemDetail extends React.Component {
     }));
   }
 
+  showDeleteModal() {
+    this.setState(() => ({
+      deleteConfirmModalShowing: true,
+    }));
+  }
+
+  hideDeleteModal() {
+    this.setState(() => ({
+      deleteConfirmModalShowing: false,
+    }));
+  }
+
   // handler to pass to NewItemForm
   
   render() {
     return (
       <div className='item-details-card'>
 
-        <Modal 
+        <Modal
+          type='edit'
           showing={this.state.editModalShowing} 
-          headerText="Edit modal" 
+          headerText={`Editing ${this.props.item.name}`}
           bodyComponent={
             <NewItemForm 
               type='edit' 
@@ -42,6 +55,17 @@ class ItemDetail extends React.Component {
               onCancelAddItem={() => this.hideEditModal()}
               returnToList={this.props.returnToList}
             />
+          }
+        />
+        <Modal
+          type='delete'
+          showing={this.state.deleteConfirmModalShowing} 
+          headerText={`Delete ${this.props.item.name}?`}
+          bodyComponent={
+            <div className='button-area'>
+              <button onClick={() => this.props.onClickDelete(this.props.item.id)} className='red'>DO IT</button>
+              <button onClick={() => this.hideDeleteModal()}>Never mind</button>
+            </div>
           }
         />
 
@@ -57,7 +81,10 @@ class ItemDetail extends React.Component {
         <div className="details-button-area">
           <button onClick={this.props.onClickBackToList}>Back to list</button>
           <button onClick={() => this.showEditModal()} className='yellow'>Edit</button>
-          <button onClick={() => this.props.onClickDelete(this.props.item.id)} className='red'>Delete</button>
+         
+          {/* <button onClick={() => this.props.onClickDelete(this.props.item.id)} className='red'>Delete</button> */}
+          <button onClick={() => this.showDeleteModal()} className='red'>Delete</button>
+          
           <button disabled={this.props.item.quantity === 0} onClick={() => this.props.onClickBuy(this.props.item.id)} className='green'>Buy</button>
           <button onClick={() => this.props.onClickRestock(this.props.item.id)} className='orange'>Restock</button>
         </div>

@@ -144,6 +144,7 @@ class MerchControl extends React.Component {
               </button>
 
               <Modal 
+                type='create'
                 showing={this.state.newItemFormShowing}
                 headerText={'Add new item'}
                 bodyComponent={<NewItemForm type='create' onClickAddItem={this.handleAddingNewItem} onCancelAddItem={this.handleCancelAddingNewItem} />}

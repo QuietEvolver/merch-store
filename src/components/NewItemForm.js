@@ -60,7 +60,7 @@ function NewItemForm(props) {
       </div>
       <div className="form-row buttons">
         <button type="submit" className='green'>Save</button>
-        <button onClick={props.onCancelAddItem} type='button'>Cancel</button>
+        <button onClick={props.onCancelAddItem} type='button'>Exit without saving</button>
       </div>
     </form>
   );
