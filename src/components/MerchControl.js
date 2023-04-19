@@ -57,6 +57,15 @@ class MerchControl extends React.Component {
     this.setState({ selectedItem: newSelectedItem });
   };
 
+  handleAddingNewItem = (newItem) => {
+    console.log(newItem);
+    const newItemList = [...this.state.itemList];
+    newItemList.push(newItem);
+    this.setState({
+      itemList: newItemList,
+      newItemFormShowing: false,
+    });
+  }
 
   render() {
     return (
@@ -66,7 +75,7 @@ class MerchControl extends React.Component {
           {
             this.state.newItemFormShowing ?
 
-              <NewItemForm /> //if true
+              <NewItemForm onClickAddItem={this.handleAddingNewItem} /> //if true
               :
               <div><MerchList itemList={this.state.itemList} /></div> // if false
           }

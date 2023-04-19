@@ -9,7 +9,8 @@ function MerchList(props) {
       <h2>Item List:</h2>
       <div className='item-list'>
         {props.itemList.map(item =>
-          <MerchListEntry 
+          <MerchListEntry
+            key={item.id}
             item={item}
           />
         )}
