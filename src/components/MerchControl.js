@@ -60,7 +60,6 @@ class MerchControl extends React.Component {
   };
 
   handleChangingSelectedItem = (id) => {
-    console.log('clicked item id', id)
     const newSelectedItem = this.getItemById(id);
     this.setState({ selectedItem: newSelectedItem });
   };
@@ -85,15 +84,22 @@ class MerchControl extends React.Component {
 
               <NewItemForm onClickAddItem={this.handleAddingNewItem} /> //if true
               :
-              this.state.selectedItem === null && 
-              <div><MerchList handleChangingSelectedItem={this.handleChangingSelectedItem} itemList={this.state.itemList} /></div> // if false
+              this.state.selectedItem === null && // if false
+              <MerchList
+                itemList={this.state.itemList} 
+                handleChangingSelectedItem={this.handleChangingSelectedItem} 
+              /> 
               
           }
-          {this.state.selectedItem === null && <button onClick={this.handleClickAddNewItem}>
-            {this.state.newItemFormShowing ? 'Cancel' : 'Add new item'}
-          </button>}
+          {
+            this.state.selectedItem === null && 
+            <button className={this.state.newItemFormShowing || 'green'} onClick={this.handleClickAddNewItem}>
+              {this.state.newItemFormShowing ? 'Cancel' : 'Add new item'}
+            </button>
+          }
 
-          {this.state.selectedItem !== null && 
+          {
+            this.state.selectedItem !== null && 
             <ItemDetail 
               item={this.state.selectedItem} 
               onClickBackToList={this.handleClickBackToList}

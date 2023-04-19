@@ -18,6 +18,7 @@ function NewItemForm(props) {
       id: v4(),
     });
   }
+  
   return (
     <form onSubmit={handleNewItemFormSubmission}>
       <div className="form-row">

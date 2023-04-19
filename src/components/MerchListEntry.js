@@ -1,7 +1,7 @@
 
+import PropTypes from "prop-types";
+
 function MerchListEntry(props) {
-
-
 
   return (
     <div className='item-list-entry'>
@@ -17,5 +17,10 @@ function MerchListEntry(props) {
     </div>
   );
 }
+
+MerchListEntry.propTypes = {
+ item: PropTypes.object,
+ onClickViewDetails: PropTypes.func,
+};
 
 export default MerchListEntry;

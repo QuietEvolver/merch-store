@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ItemDetail(props) {
 
   return (
@@ -21,5 +23,10 @@ function ItemDetail(props) {
     </div>
   );
 }
+
+ItemDetail.propTypes = {
+  item: PropTypes.object,
+  onClickBackToList: PropTypes.func,
+};
 
 export default ItemDetail;

@@ -19,4 +19,9 @@ function MerchList(props) {
   );
 }
 
+MerchList.propTypes = {
+  itemList: PropTypes.array,
+  handleChangingSelectedItem: PropTypes.func,
+};
+
 export default MerchList;
