@@ -29,8 +29,18 @@ button {
   font-size: inherit;
   padding: 1rem 2rem;
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 100ms ease;
   margin: 1rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  background-color: gray !important;
+  cursor: unset;
+}
+
+button:disabled:hover {
+  outline: none;
 }
 
 button.green {
@@ -159,4 +169,26 @@ form textarea {
 
 .details-button-area {
   background-color: salmon;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 50vw;
+  min-height: 30rem;
+  background-color: salmon;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.showing {
+  opacity: 1;
+  pointer-events: all;
 }

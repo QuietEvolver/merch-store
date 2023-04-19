@@ -16,9 +16,9 @@ function ItemDetail(props) {
       <div className="details-button-area">
         <button onClick={props.onClickBackToList}>Back to list</button>
         <button className='yellow'>Edit</button>
-        <button className='red'>Delete</button>
-        <button className='green'>Buy</button>
-        <button className='orange'>Restock</button>
+        <button onClick={() => props.onClickDelete(props.item.id)} className='red'>Delete</button>
+        <button disabled={props.item.quantity === 0} onClick={() => props.onClickBuy(props.item.id)} className='green'>Buy</button>
+        <button onClick={() => props.onClickRestock(props.item.id)} className='orange'>Restock</button>
       </div>
     </div>
   );
@@ -27,6 +27,9 @@ function ItemDetail(props) {
 ItemDetail.propTypes = {
   item: PropTypes.object,
   onClickBackToList: PropTypes.func,
+  onClickBuy: PropTypes.func,
+  onClickRestock: PropTypes.func,
+  onClickDelete: PropTypes.func,
 };
 
 export default ItemDetail;

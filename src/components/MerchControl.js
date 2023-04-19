@@ -4,6 +4,7 @@ import MerchList from './MerchList';
 import { v4 } from 'uuid';
 import NewItemForm from './NewItemForm';
 import ItemDetail from './ItemDetail';
+import Modal from './Modal';
 
 class MerchControl extends React.Component {
   constructor(props) {
@@ -53,9 +54,43 @@ class MerchControl extends React.Component {
     }));
   }
 
+  handleBuyItem = (id) => {
+    const newItemList = [...this.state.itemList];
+    const depletedItem = this.getItemById(id, newItemList);
+    depletedItem.quantity = parseInt(depletedItem.quantity - 1);
+    this.setState({
+      itemList: newItemList,
+    });
+  }
+
+  handleRestockItem = (id) => {
+    const newItemList = [...this.state.itemList];
+    const restockedItem = this.getItemById(id, newItemList);
+    restockedItem.quantity = parseInt(restockedItem.quantity + 1);
+    this.setState({
+      itemList: newItemList,
+    });
+  }
+
+  handleDeleteItem = (id) => {
+    const newItemList = [...this.state.itemList];
+    const doomedItem = this.getItemById(id, newItemList);
+    newItemList.splice(newItemList.indexOf(doomedItem), 1);
+    this.setState({
+      itemList: newItemList,
+      selectedItem: null,
+    });
+  }
+
   handleClickAddNewItem = () => {
-    this.setState((prevState) => ({
-      newItemFormShowing: !prevState.newItemFormShowing
+    this.setState(() => ({
+      newItemFormShowing: true,
+    }));
+  };
+
+  handleCancelAddingNewItem = () => {
+    this.setState(() => ({
+      newItemFormShowing: false,
     }));
   };
 
@@ -65,7 +100,6 @@ class MerchControl extends React.Component {
   };
 
   handleAddingNewItem = (newItem) => {
-    console.log(newItem);
     const newItemList = [...this.state.itemList];
     newItemList.push(newItem);
     this.setState({
@@ -74,37 +108,38 @@ class MerchControl extends React.Component {
     });
   }
 
+
+
   render() {
     return (
       <React.Fragment>
         <Header />
         <main>
           {
-            this.state.newItemFormShowing ?
-
-              <NewItemForm onClickAddItem={this.handleAddingNewItem} /> //if true
-              :
-              this.state.selectedItem === null && // if false
+            this.state.selectedItem === null ?
+            <React.Fragment>
               <MerchList
                 itemList={this.state.itemList} 
                 handleChangingSelectedItem={this.handleChangingSelectedItem} 
-              /> 
-              
-          }
-          {
-            this.state.selectedItem === null && 
-            <button className={this.state.newItemFormShowing || 'green'} onClick={this.handleClickAddNewItem}>
-              {this.state.newItemFormShowing ? 'Cancel' : 'Add new item'}
-            </button>
-          }
-
-          {
-            this.state.selectedItem !== null && 
+              />
+              <button className={this.state.newItemFormShowing || 'green'} onClick={this.handleClickAddNewItem}>
+                Add new item
+              </button>
+              <Modal 
+                showing={this.state.newItemFormShowing}
+                headerText={'Add new item'}
+                bodyComponent={<NewItemForm onClickAddItem={this.handleAddingNewItem} onCancelAddItem={this.handleCancelAddingNewItem} />}
+              />
+            </React.Fragment>
+            :
             <ItemDetail 
               item={this.state.selectedItem} 
               onClickBackToList={this.handleClickBackToList}
+              onClickBuy={this.handleBuyItem}
+              onClickRestock={this.handleRestockItem}
+              onClickDelete={this.handleDeleteItem}
             />
-          }
+          }  
         </main>
       </React.Fragment>
     );

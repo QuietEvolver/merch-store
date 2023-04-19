@@ -2,7 +2,6 @@ import React from "react";
 import { v4 } from "uuid";  
 import PropTypes from "prop-types";
 
-
 function NewItemForm(props) {
 
   function handleNewItemFormSubmission(e) {
@@ -46,12 +45,14 @@ function NewItemForm(props) {
         <input name="quantity" type="text" />
       </div>
       <button className='green'>Save</button>
+      <button onClick={props.onCancelAddItem} type='button'>Cancel</button>
     </form>
   );
 }
 
-NewItemForm.prototype = {
-  onClickAddItem: PropTypes.func
+NewItemForm.propType = {
+  onClickAddItem: PropTypes.func,
+  onCancelAddItem: PropTypes.func
 }
 
 export default NewItemForm;

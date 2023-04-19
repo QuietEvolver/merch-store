@@ -24,7 +24,7 @@ Avery's also grows different crops in different seasons. They'd like to display 
 
 ## Component Architecture
 
-![alt](src/img/farmers-market-components.png "farmers-market-components")
+![alt](src/img/component-architecture.png "component-architecture")
 
 ## How To Run This Project
 
