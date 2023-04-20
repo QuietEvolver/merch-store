@@ -236,3 +236,36 @@ form textarea {
   opacity: 1;
   pointer-events: all;
 }
+
+.cart-widget {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: var(--header-height);
+  max-height: var(--header-height);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 0 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.cart-widget > button {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: 0;
+  padding: 0 1rem;
+  height: calc(var(--header-height) - 1.25rem);
+}
+
+.cart-widget > div {
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.cart-widget > div:nth-of-type(2) {
+  grid-row-start: 2;
+}
