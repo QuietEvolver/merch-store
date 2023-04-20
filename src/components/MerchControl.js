@@ -62,8 +62,13 @@ class MerchControl extends React.Component {
     const newItemList = [...this.state.itemList];
     const depletedItem = this.getItemById(id, newItemList);
     depletedItem.quantity = parseInt(depletedItem.quantity - 1);
+
+    const newCartContents = [...this.state.cartContents];
+    newCartContents.push(id);
+
     this.setState({
       itemList: newItemList,
+      cartContents: newCartContents,
     });
   }
 
