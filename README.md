@@ -8,6 +8,7 @@
 
 * React
 * Javascript
+* Figma
 
 ## Goals/Objectives
 
